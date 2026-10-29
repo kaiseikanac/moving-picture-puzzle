@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#281c35" />
+    <title>夕焼け踏切の動く絵合わせ</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="game-shell">
+      <header class="intro">
+        <p class="eyebrow">SUNSET CROSSING</p>
+        <h1>動く絵合わせパズル</h1>
+        <p class="lead">2枚のピースを選んで、夕焼けの景色を完成させよう。</p>
+      </header>
+
+      <section class="game" aria-label="絵合わせパズル">
+        <div class="status" aria-live="polite">
+          <span id="message">ピースを2枚選んで入れ替えよう</span>
+          <span id="moves">0 回</span>
+        </div>
+
+        <div class="stage" id="stage">
+          <div class="puzzle" id="puzzle" role="group" aria-label="3×3 絵合わせパズル"></div>
+          <div class="movie" id="movieWrap" hidden>
+            <video id="movie" playsinline preload="auto" aria-label="夕焼け踏切のアニメーション">
+              <source src="assets/sunset-crossing.mp4" type="video/mp4" />
+            </video>
+            <div class="movie-fallback" id="movieFallback" hidden aria-label="夕焼け踏切の仮アニメーション">
+              <div class="train"></div>
+              <div class="barrier barrier-left"></div>
+              <div class="barrier barrier-right"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button class="button button-secondary" id="shuffle" type="button">シャッフル</button>
+          <button class="button button-primary" id="replay" type="button" hidden>もう一度あそぶ</button>
+        </div>
+      </section>
+
+      <p class="asset-note">素材を追加する場合は <code>assets/sunset-crossing.png</code> と <code>assets/sunset-crossing.mp4</code> を置いてください。</p>
+    </main>
+    <script src="game.js"></script>
+  </body>
+</html>

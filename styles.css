@@ -1,0 +1,33 @@
+:root { --ink:#fff7e5; --night:#171426; --sunset:#f38765; --gold:#ffd17a; --line:rgba(255,249,230,.7); }
+* { box-sizing:border-box; }
+body { margin:0; min-height:100svh; color:var(--ink); font-family:ui-rounded,"Hiragino Maru Gothic ProN","Yu Gothic",sans-serif; background:radial-gradient(circle at 50% 0%,#70436b 0%,#30223c 36%,var(--night) 82%); }
+.game-shell { width:min(94vw,850px); margin-inline:auto; padding:clamp(28px,7vw,70px) 0 38px; text-align:center; }
+.intro { margin-bottom:clamp(20px,4vw,36px); }
+.eyebrow { margin:0 0 8px; letter-spacing:.24em; font-size:.7rem; color:#f8c890; }
+h1 { margin:0; font-weight:700; font-size:clamp(1.7rem,5vw,3rem); text-shadow:0 2px 22px #ff845c88; }
+.lead { margin:10px auto 0; font-size:clamp(.9rem,2.5vw,1.05rem); opacity:.88; }
+.game { padding:clamp(14px,3vw,24px); border:1px solid #ffffff28; border-radius:24px; background:#ffffff0d; box-shadow:0 24px 65px #09061175; backdrop-filter:blur(10px); }
+.status { display:flex; justify-content:space-between; gap:16px; min-height:24px; margin:0 4px 13px; font-size:clamp(.82rem,2.6vw,1rem); text-align:left; }
+#moves { white-space:nowrap; color:#ffd995; font-variant-numeric:tabular-nums; }
+.stage { position:relative; aspect-ratio:16/9; overflow:hidden; border-radius:14px; background:#533452; box-shadow:0 8px 25px #09061185; }
+.puzzle { display:grid; grid-template-columns:repeat(3,1fr); grid-template-rows:repeat(3,1fr); gap:0; width:100%; height:100%; opacity:1; transition:opacity .45s ease; }
+.puzzle.is-fading { opacity:0; }
+.piece { appearance:none; position:relative; display:block; min-width:0; min-height:0; overflow:hidden; border:0; border-radius:0; padding:0; cursor:pointer; background:#533452; transition:filter .18s ease, box-shadow .18s ease; -webkit-tap-highlight-color:transparent; }
+.piece-image { position:absolute; width:300%; height:300%; max-width:none; object-fit:fill; pointer-events:none; user-select:none; }
+.piece:hover { filter:brightness(1.12); z-index:1; }
+.piece:focus-visible { z-index:2; outline:3px solid #fff; outline-offset:-4px; }
+.piece.selected { z-index:2; box-shadow:inset 0 0 0 4px var(--gold); filter:brightness(1.15); }
+.movie { position:absolute; inset:0; opacity:0; background-image:url("assets/sunset-crossing.png"),url("assets/placeholder-sunset.svg"); background-size:cover; background-position:center; transition:opacity .45s ease; }
+.movie.is-visible { opacity:1; }
+.movie video, .movie-fallback { width:100%; height:100%; object-fit:cover; }
+.movie-fallback { position:absolute; inset:0; overflow:hidden; background:linear-gradient(180deg,#5b3c67 0%,#f17f64 55%,#3f293f 56%,#201d2b 100%); }
+.movie-fallback::before { content:""; position:absolute; width:22%; aspect-ratio:1; left:39%; top:12%; border-radius:50%; background:#ffd37e; box-shadow:0 0 45px 12px #ffd17a88; }
+.movie-fallback::after { content:""; position:absolute; inset:55% 0 0; background:repeating-linear-gradient(160deg,transparent 0 30px,#f8c58c22 31px 34px); }
+.train { position:absolute; width:38%; height:22%; top:54%; left:-42%; border-radius:7px 20px 7px 7px; background:linear-gradient(#d34b4d 0 40%,#f7dbc4 41% 70%,#42415a 71%); box-shadow:0 14px 0 #1d2032; animation:pass 4.8s ease-in-out forwards; }
+.train::after { content:""; position:absolute; inset:30% 8% 35%; background:repeating-linear-gradient(90deg,#2e405b 0 13%,transparent 14% 20%); }
+.barrier { position:absolute; width:3%; height:65%; top:32%; background:repeating-linear-gradient(160deg,#ffe3b2 0 12px,#e15155 13px 23px); transform-origin:bottom; animation:lower 1.6s ease-in-out alternate infinite; }
+.barrier-left { left:9%; } .barrier-right { right:9%; }
+@keyframes pass { 15%{left:-42%} 72%{left:104%} 100%{left:104%} } @keyframes lower { to { transform:rotate(18deg); } }
+.actions { display:flex; justify-content:center; gap:12px; margin-top:18px; }
+.button { border:0; border-radius:999px; padding:12px 22px; color:var(--ink); font:inherit; font-weight:bold; cursor:pointer; transition:transform .18s ease,filter .18s ease; }
+.button:hover { transform:translateY(-2px); filter:brightness(1.1); }.button:focus-visible{outline:3px solid white;outline-offset:3px}.button-primary{background:linear-gradient(135deg,#ec725f,#e6a45d)}.button-secondary{background:#ffffff20;border:1px solid #ffffff3a}.asset-note { margin:19px 8px 0; color:#e9d9d2a8; font-size:.72rem; }code{color:#ffe0a3}@media (max-width:430px){.game{padding:12px;border-radius:18px}.status{font-size:.78rem}.button{padding:11px 17px}}
